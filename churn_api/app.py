@@ -4,7 +4,7 @@ import pandas as pd
 
 st.set_page_config(page_title="GoldWatch", page_icon="🏦", layout="wide")
 
-API = "http://127.0.0.1:8000"
+API = "https://goldwatchapp-ai-powered-churn-detection.onrender.com"
 
 st.markdown("""
 <style>
