@@ -3,11 +3,13 @@ import pandas as pd
 from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
 import io
+import os
 
-# ── 1. Load model & preprocessor once at startup ─────────────────────────────
-preprocessor = joblib.load("churn_models/preprocessor.joblib")
-model        = joblib.load("churn_models/random_forest_model.joblib")
-THRESHOLD    = 0.30   # lower than 0.5 → catches more churners (Recall priority)
+# ── Load model & preprocessor ─────────────────────────────────────────────────
+BASE_DIR     = os.path.dirname(os.path.abspath(__file__))
+preprocessor = joblib.load(os.path.join(BASE_DIR, "churn_models", "preprocessor.joblib"))
+model        = joblib.load(os.path.join(BASE_DIR, "churn_models", "random_forest_model.joblib"))
+THRESHOLD    = 0.30
 
 # ── 2. Define the app ─────────────────────────────────────────────────────────
 app = FastAPI(
