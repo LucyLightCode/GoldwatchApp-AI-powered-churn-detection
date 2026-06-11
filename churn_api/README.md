@@ -1,4 +1,4 @@
-# Union Bank Churn API
+# Gold Watch API
 
 ## Folder structure
 ```
