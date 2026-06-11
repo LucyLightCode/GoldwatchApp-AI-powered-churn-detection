@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 pandas
-scikit-learn
-imbalanced-learn
+scikit-learn==1.6.1
+imbalanced-learn==0.12.4
 joblib
 python-multipart
