@@ -15,16 +15,8 @@ THRESHOLD    = 0.30
 app = FastAPI(
     title="GoldWatch",
     description="""
-    AI-powered churn detection for premium banking customers.
-    ---
-    
-    🛠️ **Developed by:** Busayo Lucia Ajayi
-    
-    🔗 **LinkedIn:** https://www.linkedin.com/in/busayo-ajayi-lucia/
-    
-    💻 **GitHub:** https://github.com/LucyLightCode/GoldwatchApp-AI-powered-churn-detection
-    
-    ---
+    <div class="header-sub">AI-powered churn detection for premium banking customers</div>.
+   
     """,
     version="1.0.0",
     contact={
