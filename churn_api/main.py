@@ -14,10 +14,28 @@ THRESHOLD    = 0.30
 # ── 2. Define the app ─────────────────────────────────────────────────────────
 app = FastAPI(
     title="GoldWatch",
-    description="AI-powered churn detection system for premium banking customers",
-    version="1.0.0"
+    description="""
+    AI-powered churn detection for premium banking customers.
+    ---
+    
+    🛠️ **Developed by:** Busayo Lucia Ajayi
+    
+    🔗 **LinkedIn:** https://www.linkedin.com/in/busayo-ajayi-lucia/
+    
+    💻 **GitHub:** https://github.com/LucyLightCode/GoldwatchApp-AI-powered-churn-detection
+    
+    ---
+    """,
+    version="1.0.0",
+    contact={
+        "name": "Busayo Lucia Ajayi",
+        "url": "https://www.linkedin.com/in/busayo-ajayi-lucia/",
+    },
+    license_info={
+        "name": "GitHub Repository",
+        "url": "https://github.com/LucyLightCode/GoldwatchApp-AI-powered-churn-detection",
+    }
 )
-
 # ── 3. Define what one customer's data looks like ────────────────────────────
 class Customer(BaseModel):
     age:                          int
