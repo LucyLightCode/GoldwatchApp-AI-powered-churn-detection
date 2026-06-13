@@ -12,7 +12,13 @@ st.markdown("""
 
 html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
 
-.main { background: linear-gradient(135deg, #0a0a0a 0%, #1a1200 100%); }
+/* Center and constrain the main content */
+.block-container {
+    max-width: 850px !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    margin: auto !important;
+}
 
 /* Header */
 .header-box {
@@ -31,21 +37,22 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
     letter-spacing: 3px; margin: 0;
 }
 .header-sub {
-    color: #bbb; font-size: 1rem; margin-top: 4px;
+    color: #bbb; font-size: 1.1rem; margin-top: 6px;
 }
 
-/* Form card */
-.form-card {
-    background: linear-gradient(135deg, #111, #1c1400);
-    border: 1.5px solid #3d2e00;
-    border-radius: 14px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
+/* Form labels bigger */
+label, .stSelectbox label, .stNumberInput label, .stTextInput label {
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: #FFD700 !important;
 }
+
+/* Section title */
 .form-title {
-    color: #FFD700; font-size: 1.1rem;
+    color: #FFD700; font-size: 1.3rem;
     font-weight: 700; margin-bottom: 1rem;
-    border-bottom: 1px solid #3d2e00; padding-bottom: 0.5rem;
+    border-bottom: 1px solid #3d2e00;
+    padding-bottom: 0.5rem;
 }
 
 /* Risk results */
@@ -61,13 +68,15 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
     border-radius: 14px; padding: 1.5rem;
     text-align: center; margin-top: 1rem;
 }
-.result-label { font-size: 1rem; color: #aaa; margin-bottom: 4px; }
-.result-high-text { font-size: 2rem; font-weight: 900; color: #FF4B4B; }
-.result-low-text  { font-size: 2rem; font-weight: 900; color: #00C851; }
-.result-prob { font-size: 1.1rem; color: #ddd; margin-top: 6px; }
-.action-box { background: #1a1000; border-left: 4px solid #FFD700;
-              border-radius: 6px; padding: 0.8rem 1rem;
-              color: #FFD700; font-size: 0.9rem; margin-top: 1rem; }
+.result-label { font-size: 1.2rem; color: #aaa; margin-bottom: 6px; }
+.result-high-text { font-size: 2.5rem; font-weight: 900; color: #FF4B4B; }
+.result-low-text  { font-size: 2.5rem; font-weight: 900; color: #00C851; }
+.result-prob { font-size: 1.3rem; color: #ddd; margin-top: 8px; }
+.action-box {
+    background: #1a1000; border-left: 4px solid #FFD700;
+    border-radius: 6px; padding: 1rem 1.2rem;
+    color: #FFD700; font-size: 1.05rem; margin-top: 1rem;
+}
 
 /* Metric cards */
 .metric-card {
@@ -76,14 +85,9 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
     border-radius: 12px; padding: 1.2rem;
     text-align: center;
 }
-.metric-label { color: #FFD700; font-size: 0.8rem; font-weight: 600;
+.metric-label { color: #FFD700; font-size: 0.85rem; font-weight: 600;
                 text-transform: uppercase; letter-spacing: 1px; }
 .metric-value { color: white; font-size: 1.8rem; font-weight: 900; margin-top: 4px; }
-
-/* Tabs */
-button[data-baseweb="tab"] {
-    font-weight: 700 !important; font-size: 0.95rem !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
@@ -96,17 +100,18 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Sidebar Watermark ─────────────────────────────────────────────────────────
-st.sidebar.image("https://avatars.githubusercontent.com/u/178145422?v=4l", width=120)
+st.sidebar.image("https://avatars.githubusercontent.com/u/LucyLightCode", width=120)
 st.sidebar.markdown("### 🛠️ Developed by")
 st.sidebar.markdown("## Busayo Lucia Ajayi")
-st.sidebar.markdown("*Data Scientist | MLOps*")
+st.sidebar.markdown("*Data Scientist | ML Engineer*")
 st.sidebar.markdown("[🔗 Connect on LinkedIn](https://www.linkedin.com/in/busayo-ajayi-lucia/)")
 st.sidebar.markdown("[💻 GitHub](https://github.com/LucyLightCode/GoldwatchApp-AI-powered-churn-detection)")
 st.sidebar.markdown("---")
-st.sidebar.markdown("© 2026 LucyLightCode. All rights reserved.")
+st.sidebar.markdown("© 2025 Busayo Lucia Ajayi. All rights reserved.")
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3 = st.tabs(["🔍  Score a Customer", "📂  Batch Upload", "📊  Dashboard"])
+
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 1 — Single Customer Scorer
 # ══════════════════════════════════════════════════════════════════════════════
@@ -116,21 +121,21 @@ with tab1:
     col1, col2 = st.columns(2)
 
     with col1:
-        age                             = st.number_input("Age",                        min_value=18, max_value=100, value=45)
-        income_bracket                  = st.selectbox("Income Bracket",               ["Low", "Medium", "High"])
-        region                          = st.text_input("Region",                       value="Lagos")
-        has_gold_account                = st.selectbox("Has Gold Account",             [1, 0], format_func=lambda x: "Yes" if x==1 else "No")
-        has_savings_account             = st.selectbox("Has Savings Account",          [0, 1], format_func=lambda x: "Yes" if x==1 else "No")
-        num_accounts                    = st.number_input("Number of Accounts",        min_value=1, max_value=20,    value=2)
-        num_distinct_account_types      = st.number_input("Distinct Account Types",    min_value=1, max_value=10,    value=1)
+        age                             = st.number_input("Age",                          min_value=18, max_value=100, value=45)
+        income_bracket                  = st.selectbox("Income Bracket",                 ["Low", "Medium", "High"])
+        region                          = st.text_input("Region",                         value="Lagos")
+        has_gold_account                = st.selectbox("Has Gold Account",               [1, 0], format_func=lambda x: "Yes" if x==1 else "No")
+        has_savings_account             = st.selectbox("Has Savings Account",            [0, 1], format_func=lambda x: "Yes" if x==1 else "No")
+        num_accounts                    = st.number_input("Number of Accounts",          min_value=1, max_value=20,    value=2)
+        num_distinct_account_types      = st.number_input("Distinct Account Types",      min_value=1, max_value=10,    value=1)
 
     with col2:
-        customer_tenure_days            = st.number_input("Customer Tenure (days)",    min_value=0,  max_value=10000, value=365)
-        avg_net_transaction_amount_180d = st.number_input("Avg Net Txn Amount (180d)", min_value=0.0, value=10000.0,  step=500.0)
-        transaction_frequency_30d       = st.number_input("Transaction Frequency (30d)", min_value=0, max_value=500, value=5)
-        avg_transaction_amount          = st.number_input("Avg Transaction Amount",    min_value=0.0, value=8000.0,   step=500.0)
-        number_complaints_90d           = st.number_input("Complaints (last 90 days)", min_value=0, max_value=50,   value=0)
-        num_other_checking_accounts     = st.number_input("Other Checking Accounts",   min_value=0, max_value=10,   value=0)
+        customer_tenure_days            = st.number_input("Customer Tenure (days)",      min_value=0,  max_value=10000, value=365)
+        avg_net_transaction_amount_180d = st.number_input("Avg Net Txn Amount (180d)",   min_value=0.0, value=10000.0,  step=500.0)
+        transaction_frequency_30d       = st.number_input("Transaction Frequency (30d)", min_value=0, max_value=500,   value=5)
+        avg_transaction_amount          = st.number_input("Avg Transaction Amount",      min_value=0.0, value=8000.0,   step=500.0)
+        number_complaints_90d           = st.number_input("Complaints (last 90 days)",   min_value=0, max_value=50,    value=0)
+        num_other_checking_accounts     = st.number_input("Other Checking Accounts",     min_value=0, max_value=10,    value=0)
 
     st.markdown("<br>", unsafe_allow_html=True)
     predict_btn = st.button("⚡  Predict Churn Risk", use_container_width=True, type="primary")
@@ -186,7 +191,7 @@ with tab1:
 # ══════════════════════════════════════════════════════════════════════════════
 with tab2:
     st.markdown('<div class="form-title">📂 Upload Customer CSV</div>', unsafe_allow_html=True)
-    st.caption("Upload a CSV with the same columns as the single scorer form. Download results with churn scores.")
+    st.markdown('<p style="font-size:1.05rem;color:#bbb;">Upload a CSV with the same columns as the single scorer form. Download results with churn scores.</p>', unsafe_allow_html=True)
 
     file = st.file_uploader("Choose a CSV file", type=["csv"])
 
@@ -249,8 +254,8 @@ with tab3:
             "Feature": ["Complaints (90d)", "Customer Tenure", "Has Savings Account"],
             "Impact":  ["🔴 Very High",     "🟠 High",         "🟡 Medium"],
             "Recommended Action": [
-                "Resolve complaints within 48hrs — flag customers with 2+ complaints",
-                "Intensive onboarding programme for customers under 12 months",
+                "Resolve complaints within 48hrs",
+                "Intensive onboarding for customers under 12 months",
                 "Cross-sell savings product to single-product Gold customers",
             ]
         })
@@ -260,12 +265,12 @@ with tab3:
         st.markdown('<div class="form-title">📋 Model Summary</div>', unsafe_allow_html=True)
 
         summary = pd.DataFrame({
-            "Model":               ["Logistic Regression", "Random Forest ✅"],
-            "Accuracy":            ["81.50%", "92.33%"],
-            "Precision (Churn)":   ["4.46%",  "6.98%"],
-            "Recall (Churn)":      ["55.56%", "33.33%"],
-            "F1-Score (Churn)":    ["8.26%",  "11.54%"],
-            "ROC-AUC":             ["0.6479", "0.7007"],
+            "Model":             ["Logistic Regression", "Random Forest ✅"],
+            "Accuracy":          ["81.50%", "92.33%"],
+            "Precision (Churn)": ["4.46%",  "6.98%"],
+            "Recall (Churn)":    ["55.56%", "33.33%"],
+            "F1-Score (Churn)":  ["8.26%",  "11.54%"],
+            "ROC-AUC":           ["0.6479", "0.7007"],
         })
         st.dataframe(summary, use_container_width=True, hide_index=True)
 
