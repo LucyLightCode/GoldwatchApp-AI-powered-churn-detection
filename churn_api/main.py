@@ -15,7 +15,7 @@ THRESHOLD    = 0.30
 app = FastAPI(
     title="GoldWatch",
     description="AI-powered churn detection system for premium banking customers",
-    version="1.0.0"
+   
 )
 version="1.0.0",
 contact={
