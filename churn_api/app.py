@@ -14,7 +14,7 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
 
 /* Center and constrain the main content */
 .block-container {
-    max-width: 1100px !important;
+    max-width: 1300px !important;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
     margin: auto !important;
