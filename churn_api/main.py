@@ -14,18 +14,19 @@ THRESHOLD    = 0.30
 # ── 2. Define the app ─────────────────────────────────────────────────────────
 app = FastAPI(
     title="GoldWatch",
-    description="AI-powered churn detection system for premium banking customers",
-   
-)
-version="1.0.0",
-contact={
+    description="""
+AI-powered churn detection for premium banking customers.
+    """,
+    version="1.0.0",
+    contact={
         "name": "Busayo Lucia Ajayi",
         "url": "https://www.linkedin.com/in/busayo-ajayi-lucia/",
     },
-license_info={
+    license_info={
         "name": "GitHub Repository",
         "url": "https://github.com/LucyLightCode/GoldwatchApp-AI-powered-churn-detection",
     }
+)
 
 # ── 3. Define what one customer's data looks like ────────────────────────────
 class Customer(BaseModel):
@@ -59,7 +60,7 @@ def predict(df: pd.DataFrame) -> list:
 
 @app.get("/")
 def home():
-    return {"message": "Union Bank Churn API is running"}
+    return {"message": "GoldWatch API is running", "developer": "Busayo Lucia Ajayi"}
 
 
 @app.post("/predict")
