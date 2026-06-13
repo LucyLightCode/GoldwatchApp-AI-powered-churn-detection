@@ -16,6 +16,16 @@ app = FastAPI(
     title="GoldWatch",
     description="""
 AI-powered churn detection for premium banking customers.
+
+---
+
+🛠️ **Developed by:** Busayo Lucia Ajayi
+
+🔗 **LinkedIn:** https://www.linkedin.com/in/busayo-ajayi-lucia/
+
+💻 **GitHub:** https://github.com/LucyLightCode/GoldwatchApp-AI-powered-churn-detection
+
+---
     """,
     version="1.0.0",
     contact={
