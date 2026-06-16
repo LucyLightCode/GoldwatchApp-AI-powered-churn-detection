@@ -12,12 +12,11 @@ st.markdown("""
 
 html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
 
-/* Center and constrain the main content */
+/* Full screen layout */
 .block-container {
-    max-width: 1500px !important;
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
-    margin: auto !important;
+    max-width: 100% !important;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
 }
 
 /* Header */
@@ -44,7 +43,7 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
 label, .stSelectbox label, .stNumberInput label, .stTextInput label {
     font-size: 1.05rem !important;
     font-weight: 600 !important;
-    color: white !important;
+    color: #FFD700 !important;
 }
 
 /* Section title */
@@ -100,14 +99,14 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Sidebar Watermark ─────────────────────────────────────────────────────────
-st.sidebar.image("https://avatars.githubusercontent.com/u/178145422?v=4", width=120)
+st.sidebar.image("https://avatars.githubusercontent.com/u/LucyLightCode", width=120)
 st.sidebar.markdown("### 🛠️ Developed by")
 st.sidebar.markdown("## Busayo Lucia Ajayi")
-st.sidebar.markdown("*Data Scientist | MLOps*")
+st.sidebar.markdown("*Data Scientist | ML Engineer*")
 st.sidebar.markdown("[🔗 Connect on LinkedIn](https://www.linkedin.com/in/busayo-ajayi-lucia/)")
 st.sidebar.markdown("[💻 GitHub](https://github.com/LucyLightCode/GoldwatchApp-AI-powered-churn-detection)")
 st.sidebar.markdown("---")
-st.sidebar.markdown("© 2026 LucyLightCode. All rights reserved.")
+st.sidebar.markdown("© 2025 Busayo Lucia Ajayi. All rights reserved.")
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3 = st.tabs(["🔍  Score a Customer", "📂  Batch Upload", "📊  Dashboard"])
@@ -138,17 +137,8 @@ with tab1:
         num_other_checking_accounts     = st.number_input("Other Checking Accounts",     min_value=0, max_value=10,    value=0)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    col_pred, col_clear = st.columns(2)
-
-with col_pred:
     predict_btn = st.button("⚡  Predict Churn Risk", use_container_width=True, type="primary")
 
-with col_clear:
-    if st.button("🔄  Clear / Reset", use_container_width=True):
-        for key in st.session_state.keys():
-            del st.session_state[key]
-        st.rerun()
-   
     if predict_btn:
         payload = {
             "age": age, "income_bracket": income_bracket, "region": region,
