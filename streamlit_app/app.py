@@ -99,14 +99,14 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Sidebar Watermark ─────────────────────────────────────────────────────────
-st.sidebar.image("https://avatars.githubusercontent.com/u/LucyLightCode", width=120)
+st.sidebar.image("https://avatars.githubusercontent.com/u/178145422?v=4", width=120)
 st.sidebar.markdown("### 🛠️ Developed by")
 st.sidebar.markdown("## Busayo Lucia Ajayi")
-st.sidebar.markdown("*Data Scientist | ML Engineer*")
+st.sidebar.markdown("*Data Scientist | MLOps*")
 st.sidebar.markdown("[🔗 Connect on LinkedIn](https://www.linkedin.com/in/busayo-ajayi-lucia/)")
 st.sidebar.markdown("[💻 GitHub](https://github.com/LucyLightCode/GoldwatchApp-AI-powered-churn-detection)")
 st.sidebar.markdown("---")
-st.sidebar.markdown("© 2025 Busayo Lucia Ajayi. All rights reserved.")
+st.sidebar.markdown("© 2025 LucyLightCode . All rights reserved.")
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3 = st.tabs(["🔍  Score a Customer", "📂  Batch Upload", "📊  Dashboard"])
